@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Harihara Veeramallu Songs</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f0f0f0;
+      text-align: center;
+      margin: 0;
+      padding: 0;
+    }
+
+    h1 {
+      background: #222;
+      color: white;
+      padding: 20px 0;
+      margin: 0;
+    }
+
+    .song-list {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .song-card {
+      background-color: white;
+      margin: 10px;
+      padding: 10px;
+      border-radius: 10px;
+      width: 200px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    }
+
+    .song-card img {
+      width: 100%;
+      border-radius: 10px;
+    }
+
+    .song-card p {
+      font-weight: bold;
+      margin: 10px 0;
+    }
+
+    .back-link {
+      margin: 20px;
+      display: inline-block;
+    }
+
+    audio, video {
+      width: 90%;
+      max-width: 400px;
+      margin: 20px 0;
+    }
+  </style>
+</head>
+<body>
+  <h1>Harihara Veeramallu Songs</h1>
+
+  <div id="mainPage">
+    <div class="song-list">
+      <div class="song-card" onclick="loadSong(1)">
+        <img src="https://vintagestore.in/cdn/shop/products/IMG_5091_1024x1024@2x.jpg?v=1611850307" alt="Mellaga MellagaSong by Chinmayi" />
+        <p>Song Chi La Sow</p>
+      </div>
+      <div class="song-card" onclick="loadSong(2)">
+        <img src="https://upload.wikimedia.org/wikipedia/en/e/ee/Dear_Comrade.jpg" alt="Dear Comrade" />
+        <p>Dear Comrade</p>
+      </div>
+      <!-- Add up to 9 songs like this -->
+    </div>
+  </div>
+
+  <div id="songPage" style="display: none;">
+    <h2 id="Mellaga MellagaSong"></h2>
+    <img id="" src="https://vintagestore.in/cdn/shop/products/IMG_5091_1024x1024@2x.jpg?v=1611850307" alt="" width="300" />
+    <div>
+      <h3>Audio control autoplay loop muted</h3>
+      <audio src="C:\Users\196786285882\OneDrive\Desktop\10000\day6\[iSongs.info] 01 - Mellaga Mellaga (1).mp3"controls></audio>
+      
+      <h3>Video controls autoplay loop muted </h3>
+      <video src="s1.mp4" controls></video>
+    </div>
+    <a class="back-link" href="#" onclick="goBack()">← Back to Songs</a>
+  </div>
+
+  
+
+  <script>
+    const songs = [
+      {
+        id: 1,
+        image: "https://vintagestore.in/cdn/shop/products/IMG_5091_1024x1024@2x.jpg?v=1611850307",
+        audio: "O Kalala.zip",
+        video: "s1.mp4"
+      },
+      {
+        id: 2,
+        image: "https://upload.wikimedia.org/wikipedia/en/e/ee/Dear_Comrade.jpg",
+        audio: "",
+        video: ""
+      }
+      // Add more songs here up to 9
+    ];
+
+    function loadSong(id) {
+      const song = songs.find(s => s.id === id);
+      if (song) {
+        document.getElementById('mainPage').style.display = 'none';
+        document.getElementById('songPage').style.display = 'block';
+
+        document.getElementById('songTitle').textContent = song.title;
+        document.getElementById('songImage').src = song.image;
+        document.getElementById('audioPlayer').src = song.audio;
+        document.getElementById('videoPlayer').src = song.video;
+      }
+    }
+
+    function goBack() {
+      document.getElementById('mainPage').style.display = 'block';
+      document.getElementById('songPage').style.display = 'none';
+
+      document.getElementById('audioPlayer').pause();
+      document.getElementById('videoPlayer').pause();
+    }
+  </script>
+</body>
+</html>
